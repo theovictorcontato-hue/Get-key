@@ -69,26 +69,16 @@
   </div>
 
   <script>
-    // Gera uma key simples no formato xxxx-xxxx-xxxx
+    // A única key possível é "free_delta"
     function gerarKey() {
       const btn = document.getElementById('btn');
       btn.disabled = true;
       setTimeout(() => {
-        const key = gerarKeyAleatoria();
+        const key = 'free_delta';
         document.getElementById('keyValue').textContent = key;
         document.getElementById('keyText').style.display = 'block';
         btn.disabled = false;
-      }, 1000);
-    }
-
-    function gerarKeyAleatoria() {
-      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      function bloco(n) {
-        let s = '';
-        for (let i = 0; i < n; i++) s += chars.charAt(Math.floor(Math.random() * chars.length));
-        return s;
-      }
-      return `${bloco(4)}-${bloco(4)}-${bloco(4)}`;
+      }, 800);
     }
   </script>
 
