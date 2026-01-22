@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Théo Hub - Key System</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+      color: white;
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(12px);
+      border-radius: 20px;
+      padding: 40px 50px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.5);
+      text-align: center;
+      border: 1px solid rgba(255,255,255,0.1);
+      max-width: 480px;
+      width: 90%;
+    }
+    h1 {
+      margin: 0 0 20px;
+      font-size: 2.8em;
+      background: linear-gradient(90deg, #a78bfa, #7c3aed);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    p { font-size: 1.1em; opacity: 0.9; margin: 10px 0; }
+    input {
+      width: 100%;
+      padding: 14px;
+      margin: 20px 0;
+      border: none;
+      border-radius: 12px;
+      background: rgba(255,255,255,0.12);
+      color: white;
+      font-size: 1.1em;
+      text-align: center;
+    }
+    button {
+      background: linear-gradient(90deg, #7c3aed, #a78bfa);
+      border: none;
+      padding: 14px 40px;
+      border-radius: 50px;
+      color: white;
+      font-size: 1.2em;
+      cursor: pointer;
+      transition: all 0.3s;
+      margin: 10px;
+    }
+    button:hover { transform: translateY(-3px); box-shadow: 0 10px 25px rgba(124,58,237,0.5); }
+    .key { font-size: 1.4em; font-weight: bold; color: #c4b5fd; margin: 20px 0; word-break: break-all; }
+    footer { margin-top: 30px; font-size: 0.9em; opacity: 0.7; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Théo Hub Key System</h1>
+    <p>Obtenha sua key gratuita ou premium aqui!</p>
+    
+    <button onclick="gerarKey()">Gerar Key Aleatória (Teste)</button>
+    <div class="key" id="keyDisplay">Clique no botão para gerar</div>
+    
+    <p>Ou cole sua key para verificar:</p>
+    <input type="text" id="keyInput" placeholder="XXXX-XXXX-XXXX-XXXX" />
+    <button onclick="verificarKey()">Verificar Key</button>
+    
+    <footer>Feito por Théo | Duque de Caxias - RJ | 2026</footer>
+  </div>
+
+  <script>
+    function gerarKey() {
+      const chars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+      let key = '';
+      for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+          key += chars.charAt(Math.floor(Math.random() * chars.length));
+        }
+        if (i < 3) key += '-';
+      }
+      document.getElementById('keyDisplay').innerText = key;
+      // Aqui você pode depois salvar no banco ou mostrar link pro Discord/Pastebin
+      alert("Key gerada! Copie e use no script.\n\nSe quiser keys fixas ou por HWID, me avise!");
+    }
+
+    function verificarKey() {
+      const input = document.getElementById('keyInput').value.trim().toUpperCase();
+      // Lógica simples de exemplo (depois conecte com seu backend ou lista fixa)
+      const keysValidas = ["THEO-OP-2026", "ABC1-2345-6789-0XYZ"]; // adicione as suas
+      if (keysValidas.includes(input)) {
+        alert("Key válida! Pode usar o hub agora.");
+      } else {
+        alert("Key inválida ou expirada. Gere uma nova ou compre premium!");
+      }
+    }
+  </script>
+</body>
+</html>
